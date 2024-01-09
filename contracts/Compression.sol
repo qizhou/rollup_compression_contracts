@@ -2,13 +2,13 @@
 pragma solidity >=0.8.9;
 
 contract Compression {
-    uint256 immutable DICT_SIZE;
-    mapping(bytes32 => uint256) public frequencyMap; // key to frequency
-    mapping(bytes32 => uint256) public positionMap; // key to dictonary index mapping (1-based indexed)
+    uint256 public immutable DICT_SIZE;
+    mapping(bytes32 key => uint256 frequency) public frequencyMap; // key to frequency
+    mapping(bytes32 key => uint256 position) public positionMap; // key to dictonary index mapping (1-based indexed)
     bytes32[] public dictionary;
 
-    constructor(uint256 _dict_size) {
-        DICT_SIZE = _dict_size;
+    constructor(uint256 _dictSize) {
+        DICT_SIZE = _dictSize;
     }
 
     function getLength() public view returns (uint256) {
